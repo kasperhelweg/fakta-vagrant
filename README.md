@@ -1,5 +1,5 @@
 ##Quick start
-The scripts are in version 0 or something, so follow these steps EXACTLY.
+The scripts are in version 0 or something, so follow these steps exactly.
 
 1. Install virtualbox and vagrant on your machine.
 
@@ -13,7 +13,7 @@ The scripts are in version 0 or something, so follow these steps EXACTLY.
 
         vagrant up
 
-5. Test by with curl ( Ommiting the pipe if you don't have a python with mjson.tool. Highly recommended though )
+5. Test with curl ( Ommiting the pipe if you don't have a python with mjson.tool. Highly recommended though )
 
         curl -v 
         -H "Accept:application/json" 
@@ -23,5 +23,6 @@ The scripts are in version 0 or something, so follow these steps EXACTLY.
 6. Clone whatever apps you want to work on, by issuing 
 
         ./apps/<app-name>.sh
+        vagrant provision
 
 7. Start coding in emacs :)
