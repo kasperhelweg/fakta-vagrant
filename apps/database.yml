@@ -1,0 +1,15 @@
+development:
+  adapter: postgresql
+  encoding: utf8
+  database: fakta_development
+  pool: 5
+  username: vagrant
+  password: vagrant
+
+test:
+  adapter: postgresql
+  encoding: utf8
+  database: fakta_test
+  pool: 5
+  username: vagrant
+  password: vagrant
