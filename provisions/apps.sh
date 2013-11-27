@@ -15,4 +15,6 @@ if [ -d "/vagrant/fakta-backend" ]; then
     echo "Test"
     rake db:migrate RAILS_ENV=test > /dev/null 2>&1
     echo "fakta-backend prepared"
+    echo "starting server"
+    rails s -d
 fi
