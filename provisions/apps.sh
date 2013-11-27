@@ -1,6 +1,8 @@
-#!/bin/bash
-echo "Searching for apps..."
+#!/usr/bin/env bash
+set -e
+source ~/.rvm/scripts/rvm
 
+echo "Searching for apps..."
 if [ -d "/vagrant/fakta-backend" ]; then
     cd /vagrant/fakta-backend
     echo "setting up: fakta-backend"
@@ -8,7 +10,6 @@ if [ -d "/vagrant/fakta-backend" ]; then
     bundle update debugger-ruby_core_source
     bundle install
     echo "Running migrations"
-    #mv ./config/database.yml.vagrant ./config/database.yml
     echo "Development"
     rake db:migrate RAILS_ENV=development > /dev/null 2>&1
     echo "Test"
