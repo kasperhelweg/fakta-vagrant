@@ -17,6 +17,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # doesn't already exist on the user's system.
   #config.vm.box_url   = 'http://files.vagrantup.com/precise64.box'
   config.vm.box_url   = '~/Development/vagrant_boxes/precise64.box'
+
+  # Provider-specific configuration so you can fine-tune various
+  # backing providers for Vagrant. These expose provider-specific options.
+  # Example for VirtualBox:
+  #
+  config.vm.provider :virtualbox do |vb|
+    vb.customize ["modifyvm", :id, "--memory", "2048"]
+    vb.customize ["modifyvm", :id, "--cpus", "2"]
+  end
   
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
@@ -27,9 +36,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Apache
   config.vm.network :forwarded_port, guest: 80, host: 4000
   # Postgres
-  config.vm.network :forwarded_port, guest: 5432, host: 5000
+  config.vm.network :forwarded_port, guest: 5432, host: 5432
   # Redis
-  config.vm.network :forwarded_port, guest: 6379, host: 6000
+  config.vm.network :forwarded_port, guest: 6379, host: 6379
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
@@ -44,26 +53,19 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Default value: false
   # config.ssh.forward_agent = true
 
+  # Shell provisioning
+  config.vm.provision "shell", path: "./provisions/puppet_script.sh"
+  config.vm.provision "shell", path: "./provisions/install_script.sh", privileged: false
+  config.vm.provision "shell", path: "./provisions/apps.sh", privileged: false
+  
+  
   # Share an additional folder to the guest VM. The first argument is
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
-
-  # Shell provisioning
-  config.vm.provision "shell", path: "./provisions/puppet_script.sh"
-  config.vm.provision "shell", path: "./provisions/install_script.sh", privileged: false
-  config.vm.provision "shell", path: "./provisions/apps.sh", privileged: false
+  config.vm.synced_folder "./fakta-wordpress-plugin", "/var/www/wordpress/wp-content/plugins"
     
-  # Provider-specific configuration so you can fine-tune various
-  # backing providers for Vagrant. These expose provider-specific options.
-  # Example for VirtualBox:
-  #
-  config.vm.provider :virtualbox do |vb|
-    vb.customize ["modifyvm", :id, "--memory", "2048"]
-    vb.customize ["modifyvm", :id, "--cpus", "2"]
-  end
-  
   # View the documentation for the provider you're using for more
   # information on available options.
 
