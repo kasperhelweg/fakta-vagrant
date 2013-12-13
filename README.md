@@ -39,13 +39,13 @@ The scripts are in version 0 or something, so follow these steps exactly.
 ##Stack
 The stack is currently
 
-        Ubuntu precise 64bit
-	Apache2
-	PHP
-	MySQL
-	Redis
-	PostgreSQL
-	RVM
-	Ruby 1.9.3
-	NodeJS  
-	Wordpress
+    Ubuntu(precise) 64bit
+    Apache2
+    PHP
+    MySQL
+    Redis
+    PostgreSQL
+    RVM
+    Ruby 1.9.3
+    NodeJS  
+    Wordpress
