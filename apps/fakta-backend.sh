@@ -5,3 +5,4 @@ cd fakta-backend
 echo 1.9.3 > .ruby-version
 echo fakta > .ruby-gemset
 git checkout -b staging origin/staging
+git checkout master
