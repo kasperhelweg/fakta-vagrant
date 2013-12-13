@@ -13,26 +13,38 @@ The scripts are in version 0 or something, so follow these steps exactly.
 
         vagrant up
 
-5. Test with curl ( Ommiting the pipe if you don't have a python with mjson.tool. Highly recommended though )
+5. Now,
+	vagrant ssh
+	cd /vagrant/fakta-backend
+	foreman start
+
+6. Test with curl ( Ommiting the pipe if you don't have a python with mjson.tool. Highly recommended though )
 
         curl -v 
         -H "Accept:application/json" 
         -H "Content-type:application/json" 
         -X GET http://localhost:3000/ | python -mjson.tool 
 
-6. Clone whatever apps you need to work on, by issuing 
+7. Clone whatever apps you need to work on, by issuing 
 
         ./apps/<app-name>.sh
         vagrant provision
 
-7. Start coding in emacs :)
+8. Start coding in emacs :)
 
 ##Details
 
 ##Suggestions
-Install pgadmin and redis-commander on your own machine. These are tools for managing postgres and redis.
-postgres can be accesed at: localhost:?
-redis can be accesed at: localhost:?
 
-When developing you might want to start two vagrant ssh sessions. 
-Start Foreman in one of them, and use the other for commands such as bundle install and rake tasks.
+##Stack
+The stack currently is
+    	Ubuntu precise 64bit
+	Apache2
+	PHP
+	MySQL
+	Redis
+	PostgreSQL
+	RVM
+	Ruby 1.9.3
+	NodeJS  
+	Wordpress
